@@ -4,7 +4,14 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "outDir": "dist",
-    "types": ["jest", "node"],
+    "types": [
+      "jest",
+      "node"
+    ],
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
   },
   "include": [
     "src/**/*",

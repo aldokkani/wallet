@@ -1,0 +1,17 @@
+{
+  "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "types": ["jest", "node"],
+  },
+  "include": [
+    "src/**/*",
+    "__tests__/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

@@ -26,6 +26,7 @@ export const dbExec = async (query: string, values?: Primitives[]): Promise<{ ro
       conn.execute(query, values, (err: Error, rows: RowDataPacket[], fields: FieldPacket[]) => {
         if (err != null) {
           reject(err)
+          conn.release()
           return
         }
 

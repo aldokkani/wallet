@@ -4,13 +4,13 @@
         "node": true
     },
     "extends": "standard-with-typescript",
-    "overrides": [
-    ],
+    "overrides": [],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
         "project": "tsconfig.json"
     },
     "rules": {
+        "@typescript-eslint/no-misused-promises": "off"
     }
 }

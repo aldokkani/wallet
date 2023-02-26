@@ -3,11 +3,13 @@ import morgan from 'morgan'
 import authRouter from './routers/v1/auth'
 import userRouter from './routers/v1/user'
 import walletRouter from './routers/v1/wallet'
+import { ErrorWithStatus } from './utils'
 
 const app = express()
 const LOG_FORMAT = process.env['LOG_FORMAT'] ?? 'dev'
 
 app.use(morgan(LOG_FORMAT))
+app.use(express.json())
 
 app.use('/api/v1', authRouter, userRouter, walletRouter)
 
@@ -19,12 +21,11 @@ app.use((_req, res) =>
 )
 
 // Generic error exception handler
-app.use((err: Error, _req: Request, res: Response, _next: NextFunction) =>
+app.use((err: Error | ErrorWithStatus, _req: Request, res: Response, _next: NextFunction) =>
   res
-    .status(500)
+    .status(err instanceof ErrorWithStatus ? err.statusCode : 500)
     .json({
-      message: 'Server internal error',
-      errMsg: err.message,
+      message: err.message,
       stacktrace: err.stack // TODO: omit on prod
     })
 )

@@ -9,6 +9,9 @@ services:
       - 3306:3306
     environment:
       MARIADB_ROOT_PASSWORD: example
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/scripts:/docker-entrypoint-initdb.d
 
   adminer:
     image: adminer

@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express'
-import { createSession } from '../../models/v1/session'
-import { findUserByEmail } from '../../models/v1/user'
+import { createSession } from '../models/session'
+import { findUserByEmail } from '../models/user'
 import { ErrorWithStatus } from '../../utils'
 
 export const loginController = async ({ body }: Request, res: Response, next: NextFunction): Promise<void> => {

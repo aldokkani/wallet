@@ -1,10 +1,10 @@
 import request from 'supertest'
 import app from '../../../src/app'
-import * as SessionModel from '../../../src/models/v1/session'
-import * as UserModel from '../../../src/models/v1/user'
+import * as SessionModel from '../../../src/v1/models/session'
+import * as UserModel from '../../../src/v1/models/user'
 
-jest.mock('../../../src/models/v1/session')
-jest.mock('../../../src/models/v1/user')
+jest.mock('../../../src/v1/models/session')
+jest.mock('../../../src/v1/models/user')
 
 describe('/auth', () => {
   const requestWithApp = request(app)

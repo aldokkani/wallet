@@ -1,8 +1,8 @@
 import express, { type Response, type Request, type NextFunction } from 'express'
 import morgan from 'morgan'
-import authRouter from './routers/v1/auth'
-import userRouter from './routers/v1/user'
-import walletRouter from './routers/v1/wallet'
+import authRouter from './v1/routers/auth'
+import userRouter from './v1/routers/user'
+import walletRouter from './v1/routers/wallet'
 import { ErrorWithStatus } from './utils'
 
 const app = express()

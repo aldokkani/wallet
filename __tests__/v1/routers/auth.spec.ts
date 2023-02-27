@@ -1,13 +1,20 @@
+import bcrypt from 'bcrypt'
 import request from 'supertest'
 import app from '../../../src/app'
 import * as SessionModel from '../../../src/v1/models/session'
 import * as UserModel from '../../../src/v1/models/user'
 
+jest.mock('bcrypt')
 jest.mock('../../../src/v1/models/session')
 jest.mock('../../../src/v1/models/user')
 
 describe('/auth', () => {
   const requestWithApp = request(app)
+
+  afterAll(() => {
+    jest.resetAllMocks()
+    jest.resetAllMocks()
+  })
 
   describe('/login', () => {
     const routePath = '/api/v1/auth/login'
@@ -16,7 +23,8 @@ describe('/auth', () => {
 
     it('logins in the user', async () => {
       (UserModel.findUserByEmail as jest.Mock).mockResolvedValue({ password });
-      (SessionModel.createSession as jest.Mock).mockResolvedValue(sessionId)
+      (SessionModel.createSession as jest.Mock).mockResolvedValue(sessionId);
+      (bcrypt.compare as jest.Mock).mockResolvedValue(true)
 
       const res = await requestWithApp
         .post(routePath)
@@ -28,7 +36,8 @@ describe('/auth', () => {
     })
 
     it('returns error on wrong user credentials', async () => {
-      (UserModel.findUserByEmail as jest.Mock).mockResolvedValue({ password })
+      (UserModel.findUserByEmail as jest.Mock).mockResolvedValue({ password });
+      (bcrypt.compare as jest.Mock).mockResolvedValue(false)
 
       const res = await requestWithApp
         .post(routePath)
@@ -42,5 +51,9 @@ describe('/auth', () => {
 
   describe('/logout', () => {
     // TODO: test logout
+  })
+
+  describe('/signup', () => {
+    // TODO: test signup
   })
 })

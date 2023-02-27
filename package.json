@@ -29,6 +29,7 @@
   "homepage": "https://github.com/aldokkani/wallet#readme",
   "devDependencies": {
     "@tsconfig/node18-strictest-esm": "^1.0.1",
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.4.0",
     "@types/morgan": "^1.9.4",
@@ -48,6 +49,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",

@@ -3,13 +3,13 @@ CREATE DATABASE IF NOT EXISTS wallet;
 USE wallet;
 
 CREATE TABLE IF NOT EXISTS roles (
-  id INT NOT NULL PRIMARY KEY,
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name char(128) UNIQUE,
   permissions JSON CHECK (JSON_VALID(permissions))
 );
 
 CREATE TABLE IF NOT EXISTS users (
-  id INT NOT NULL PRIMARY KEY,
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   email char(128) UNIQUE,
   password LONGTEXT,
   balance DECIMAL(15,2),
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS transactions (
-  id INT NOT NULL PRIMARY KEY,
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   userId INT REFERENCES users(id),
   type ENUM('deposit', 'withdraw'),
   value DECIMAL(15,2),

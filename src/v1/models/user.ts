@@ -9,6 +9,10 @@ interface User {
   roleId: number
 }
 
+export const findUserById = async (id: number): Promise<User> => {
+  return (await dbExec('SELECT * from `users` WHERE id = ?', [id]))?.rows?.[0] as User ?? {}
+}
+
 export const findUserByEmail = async (email: string): Promise<User> => {
   return (await dbExec('SELECT * from `users` WHERE email = ?', [email]))?.rows?.[0] as User ?? {}
 }

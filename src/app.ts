@@ -1,7 +1,7 @@
 import express, { type Response, type Request, type NextFunction } from 'express'
 import morgan from 'morgan'
 import authRouter from './v1/routers/auth'
-import userRouter from './v1/routers/user'
+import userRouter from './v1/routers/users'
 import walletRouter from './v1/routers/wallet'
 import { ErrorWithStatus } from './utils'
 

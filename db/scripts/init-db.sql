@@ -30,4 +30,5 @@ CREATE TABLE IF NOT EXISTS sessions (
   expire TIMESTAMP NOT NULL
 );
 
-INSERT INTO users VALUES (1, 'john@example.com', '123456', 0, null);
+INSERT INTO roles VALUES (1, 'user', '["transactions_read", "transactions_insert", "balance_read"]');
+INSERT INTO users VALUES (1, 'john@example.com', '$2b$10$Wz6kHCoPJ0evb8.BwbhbxealX/fvqBMSPRef0GuxCN79HH6.YLQVa', 0, 1);

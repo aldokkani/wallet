@@ -7,6 +7,10 @@ const hasPermission = (path: string, permissions: string[] = []): boolean => {
   switch (path) {
     case '/balance':
       return permissions.includes('balance_read')
+    case '/deposit':
+      return true
+    case '/withdraw':
+      return true
     default:
       return false
   }
